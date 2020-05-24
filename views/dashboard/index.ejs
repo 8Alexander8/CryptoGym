@@ -1,0 +1,102 @@
+<%- include ('./partials/header') %>
+<!-- TradingView Widget BEGIN -->
+<div class="tradingview-widget-container">
+  <div class="tradingview-widget-container__widget">
+    <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span
+          class="blue-text">Ticker Tape</span></a> by TradingView</div>
+  </div>
+  <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+    {
+      "symbols": [{
+          "proName": "FOREXCOM:SPXUSD",
+          "title": "S&P 500"
+        },
+        {
+          "proName": "FOREXCOM:NSXUSD",
+          "title": "Nasdaq 100"
+        },
+        {
+          "proName": "FX_IDC:EURUSD",
+          "title": "EUR/USD"
+        },
+        {
+          "proName": "BITSTAMP:BTCUSD",
+          "title": "BTC/USD"
+        },
+        {
+          "proName": "BITSTAMP:ETHUSD",
+          "title": "ETH/USD"
+        }
+      ],
+      "colorTheme": "light",
+      "isTransparent": false,
+      "displayMode": "adaptive",
+      "locale": "en"
+    }
+  </script>
+</div>
+<!-- TradingView Widget END -->
+
+<!-- Begin Page Content -->
+<div class="container">
+  <div class="text-center mt-5">
+    <h1 class="h3 mb-5 text-gray-800">Cryptocurrency Overview</h1>
+
+  </div>
+  <div class="container shadow-lg p-3 mb-5">
+
+    <table id="table_id" class="display responsive nowrap text-center " style="width:100%">
+      <thead>
+        <tr>
+          <th>Coin</th>
+          <th data-priority="2">Symbol</th>
+          <th data-priority="3">Price</th>
+          <th>Change (24Hr)</th>
+          <th>Add to Watchlist</th>
+          <th data-priority="1">Buy</th>
+        </tr>
+      </thead>
+      <tbody id="table-body">
+        <% json_data.forEach(function(data){ %>
+        <tr data-coin=<%= data.symbol %>>
+          <td>
+            <%= data.id %>
+          </td>
+          <td>
+            <%= data.symbol %>
+          </td>
+          <td id="<%= data.id %>" class="target">
+            <%= parseFloat(data.priceUsd).toFixed(2) %>
+          </td>
+          <td>
+            <%= parseFloat(data.changePercent24Hr).toFixed(2) %> %
+          </td>
+          <td data-button>
+            <button type="button" class="btn btn-primary btn-watchList" data-symbol=<%= data.symbol %>
+              data-coin=<%= data.id %> data-user_id=<%= currentUser._id %>
+              data-price=<%= parseFloat(data.priceUsd).toFixed(2) %>>
+              Add
+            </button>
+          </td>
+          <td>
+            <button type="button" class="btn btn-success btn-buy" data-coin_name=<%= data.id %>
+              data-symbol=<%= data.symbol %> data-user_id=<%= currentUser._id %>>
+              Buy
+            </button>
+          </td>
+        </tr>
+        <% }) %>
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+</div>
+
+<!-- WebSocket -->
+<script src="/js/priceWebSocket-index.js"></script>
+
+<!-- End of Main Content -->
+<%- include ('./partials/footer') -%>

@@ -1,0 +1,77 @@
+<%- include ('./partials/header') %>
+
+<div class="container">
+    <div class="text-center">
+        <h1 class="h3 mb-5 text-gray-800">Watchlist</h1>
+    </div>
+    <div class="container-fluid p-3 shadow mb-5">
+        <table id="table_watchlist" class="display">
+            <thead>
+                <tr>
+                    <th>Symbol Info</th>
+                </tr>
+            </thead>
+            <tbody id="table-body">
+                <% data.forEach(function(data){ %>
+                <tr id=<%= data._id %>>
+                    <td>
+                        <div class="row">
+                            <div class="col-xs-12 col-md-12 col-lg-6">
+                                <!-- TradingView Widget BEGIN -->
+                                <div class="tradingview-widget-container">
+                                    <div class="tradingview-widget-container__widget"></div>
+                                    <div class="tradingview-widget-copyright"><a
+                                            href="https://www.tradingview.com/symbols/BTCUSD/" rel="noopener"
+                                            target="_blank"><span class="blue-text">Rates</span></a> by TradingView
+                                    </div>
+                                    <script type="text/javascript"
+                                        src="https://s3.tradingview.com/external-embedding/embed-widget-mini-symbol-overview.js"
+                                        async>
+                                        {
+                                            "symbol": "<%= data.symbol %>USD",
+                                            "width": "100%",
+                                            "height": "100%",
+                                            "locale": "en",
+                                            "dateRange": "12m",
+                                            "colorTheme": "light",
+                                            "trendLineColor": "#37a6ef",
+                                            "underLineColor": "#E3F2FD",
+                                            "isTransparent": false,
+                                            "autosize": false,
+                                            "largeChartUrl": ""
+                                        }
+                                    </script>
+                                </div>
+
+                                <!-- TradingView Widget END -->
+                            </div>
+                            <div class="col-xs-12 col-md-12 col-lg-6">
+                                <div class="container shadow p-2 w-100 h-100">
+                                    <div class="m-2">
+                                        <p class="font-weight-bold">Added At: <span
+                                                class="font-weight-light"><%= data.addedAt %></span></p>
+                                    </div>
+                                    <div class="m-2">
+                                        <p class="font-weight-bold">Added Price: <span
+                                                class="font-weight-light"><%= data.price %></span></p>
+                                    </div>
+                                    <div class="text-center">
+                                        <button type="button" class="btn btn-success btn-buy"
+                                            data-coin_name=<%= data.name %> data-symbol=<%= data.symbol %>
+                                            data-user_id=<%= currentUser._id %>>Buy</button>
+                                        <button type="button" class="btn btn-danger btn-delete-watchlist"
+                                            data-symbol=<%= data.symbol %>
+                                            data-watchlist_id=<%= data._id %>>Remove</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<%- include ('./partials/footer') %>

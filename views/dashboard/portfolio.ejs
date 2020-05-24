@@ -1,0 +1,118 @@
+<%- include ('./partials/header') %>
+<div class="container">
+    <div class="text-center">
+        <h1 class="h3 mb-5 text-gray-800">Portfolio</h1>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold">Account Info</h6>
+        </div>
+
+
+        <div class="card-body text-center">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            Current Balance
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= currentUser.capital.toLocaleString() %> $</h5>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            Total P/L
+                        </div>
+                        <div class="card-body">
+                            <% if(total_PL > 0) {%>
+                            <h5 class="card-title text-success"><%= total_PL %> $</h5>
+                            <% }else{ %>
+                            <h5 class="card-title text-danger"><%= total_PL %> $</h5>
+                            <% } %>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card shadow-sm">
+                        <div class="card-header">
+                            Open Trades
+                        </div>
+                        <div class="card-body">
+                            <h5 class="card-title"><%= openPositions %></h5>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="m-2 p-2">
+                <p class="font-weight-bold">Current Balance: <span
+                        class="font-weight-light"><%= parseFloat(currentUser.capital).toFixed(2)  %></span></p>
+                <p class="font-weight-bold">Open Trades: <span class="font-weight-light"><%= openPositions %> </span>
+                </p>
+                <% if(total_PL > 0) {%>
+                <p class="font-weight-bold">Total P/L: <span class="font-weight-light text-success"><%= total_PL %>
+                    </span>
+                    <% }else{ %>
+                    <p class="font-weight-bold">Total P/L: <span class="font-weight-light text-danger"><%= total_PL %>
+                        </span>
+                        <% } %>
+                    </p>
+            </div> -->
+        </div>
+    </div>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold">Open Trades</h6>
+        </div>
+        <div class="card-body text-center">
+            <table id="table_portfolio" class="display responsive nowrap" style="width:100%">
+                <thead>
+                    <tr>
+                        <th data-priority="2">Symbol</th>
+                        <th>Name</th>
+                        <th>Entry Price</th>
+                        <th>Entry Date</th>
+                        <th>Amount</th>
+                        <th>PositionValue</th>
+                        <th data-priority="3">Current Price</th>
+                        <th>P/L</th>
+                        <th data-priority="1">Action</th>
+                    </tr>
+                </thead>
+                <tbody id="table-body">
+                    <% data.forEach(function(data){ %>
+
+                    <tr id=<%= data._id %>>
+                        <td> <%= data.symbol %></td>
+                        <td> <%= data.name %></td>
+                        <td> <%= data.price %></td>
+                        <td> <%= data.addedAt %></td>
+                        <td> <%= data.amount %></td>
+                        <td> <%= data.positionValue %></td>
+                        <td> <%= data.currentPrice %></td>
+                        <% if(data.totalPL > 0) { %>
+                        <td class="text-success"> <%= data.totalPL %></td>
+                        <%} else { %>
+                        <td class="text-danger"> <%= data.totalPL %></td>
+                        <% } %>
+                        <td> <button type="button" class="btn btn-danger btn-sell" data-position_id=<%= data._id %>
+                                data-coin_name=<%= data.name %> data-symbol=<%= data.symbol %>
+                                data-amount=<%= data.amount %> data-user_id=<%= currentUser._id %>>Sell</button></td>
+                    </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+</div>
+
+<%- include ('./partials/footer') %>

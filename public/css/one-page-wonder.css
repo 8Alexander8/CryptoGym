@@ -1,0 +1,341 @@
+/*!
+ * Start Bootstrap - One Page Wonder v5.0.7 (https://startbootstrap.com/template-overviews/one-page-wonder)
+ * Copyright 2013-2019 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-one-page-wonder/blob/master/LICENSE)
+ */
+html,
+body {
+
+  overflow-x: hidden;
+}
+
+body {
+  font-family: 'Lato';
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Catamaran';
+  font-weight: 800 !important;
+}
+
+.btn-xl {
+  text-transform: uppercase;
+  padding: 1.5rem 3rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+.bg-black {
+  background-color: #000 !important;
+}
+
+.rounded-pill {
+  border-radius: 5rem;
+}
+
+.navbar-custom {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.navbar-custom .navbar-brand {
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+}
+
+.navbar-custom .navbar-nav .nav-item .nav-link {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.1rem;
+}
+
+header.masthead {
+  position: relative;
+  overflow: hidden;
+  padding-top: calc(7rem + 72px);
+  padding-bottom: 7rem;
+  background: #76b852;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8DC26F, #76b852);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8DC26F, #76b852);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: scroll;
+  background-size: cover;
+}
+
+header.masthead .masthead-content {
+  z-index: 1;
+  position: relative;
+}
+
+header.masthead .masthead-content .masthead-heading {
+  font-size: 4rem;
+}
+
+header.masthead .masthead-content .masthead-subheading {
+  font-size: 2rem;
+}
+
+header.masthead .bg-circle {
+  z-index: 0;
+  position: absolute;
+  border-radius: 100%;
+  background: linear-gradient(0deg, #ee0979 0%, #ff6a00 100%);
+}
+
+header.masthead .bg-circle-1 {
+  height: 90rem;
+  width: 90rem;
+  bottom: -55rem;
+  left: -55rem;
+}
+
+header.masthead .bg-circle-2 {
+  height: 50rem;
+  width: 50rem;
+  top: -25rem;
+  right: -25rem;
+}
+
+header.masthead .bg-circle-3 {
+  height: 20rem;
+  width: 20rem;
+  bottom: -10rem;
+  right: 5%;
+}
+
+header.masthead .bg-circle-4 {
+  height: 30rem;
+  width: 30rem;
+  top: -5rem;
+  right: 35%;
+}
+
+@media (min-width: 992px) {
+  header.masthead {
+    padding-top: calc(10rem + 55px);
+    padding-bottom: 10rem;
+  }
+
+  header.masthead .masthead-content .masthead-heading {
+    font-size: 6rem;
+  }
+
+  header.masthead .masthead-content .masthead-subheading {
+    font-size: 4rem;
+  }
+}
+
+.bg-primary {
+  background-color: #1b5a19 !important;
+}
+
+.btn-primary {
+  background-color: #1b5a19;
+  border-color: #1b5a19;
+}
+
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover {
+  background-color: #308a2c !important;
+  border-color: #308a2c !important;
+}
+
+/* .btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(238, 9, 121, 0.5);
+} */
+
+.btn-secondary {
+  background-color: #ff6a00;
+  border-color: #ff6a00;
+}
+
+.btn-secondary:active,
+.btn-secondary:focus,
+.btn-secondary:hover {
+  background-color: #cc5500 !important;
+  border-color: #cc5500 !important;
+}
+
+.btn-secondary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(255, 106, 0, 0.5);
+}
+
+.green_background {
+
+  background: #76b852;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #8DC26F, #76b852);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #8DC26F, #76b852);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+.form-control {
+  font-size: 16px;
+  transition: all 0.4s;
+  box-shadow: none;
+}
+
+.form-control:focus {
+  border-color: #5cb85c;
+}
+
+.form-control,
+.btn {
+  border-radius: 50px;
+  outline: none !important;
+}
+
+.signup-form {
+  width: 50%;
+  margin: 0 auto;
+  padding: 30px 0;
+  padding-top: 150px;
+}
+
+@media (max-width: 990px) {
+  .signup-form {
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 0;
+    padding-top: 150px;
+  }
+}
+
+.signup-form form {
+  border-radius: 5px;
+  margin-bottom: 20px;
+  background: #fff;
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+}
+
+.signup-form a {
+  color: #5cb85c;
+}
+
+.signup-form h2 {
+  text-align: center;
+  font-size: 34px;
+  margin: 10px 0 15px;
+}
+
+.signup-form .hint-text {
+  color: #999;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.signup-form .form-group {
+  margin-bottom: 20px;
+}
+
+.signup-form .btn {
+  font-size: 18px;
+  line-height: 26px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.signup-btn {
+  text-align: center;
+  border-color: #5cb85c;
+  transition: all 0.4s;
+}
+
+.signup-btn:hover {
+  background: #5cb85c;
+  opacity: 0.8;
+}
+
+.or-seperator {
+  margin: 50px 0 15px;
+  text-align: center;
+  border-top: 1px solid #e0e0e0;
+}
+
+.or-seperator b {
+  padding: 0 10px;
+  width: 40px;
+  height: 40px;
+  font-size: 16px;
+  text-align: center;
+  line-height: 40px;
+  background: #fff;
+  display: inline-block;
+  border: 1px solid #e0e0e0;
+  border-radius: 50%;
+  position: relative;
+  top: -22px;
+  z-index: 1;
+}
+
+.social-btn .btn {
+  color: #fff;
+  margin: 10px 0 0 15px;
+  font-size: 15px;
+  border-radius: 50px;
+  font-weight: normal;
+  border: none;
+  transition: all 0.4s;
+}
+
+.social-btn .btn:first-child {
+  margin-left: 0;
+}
+
+.social-btn .btn:hover {
+  opacity: 0.8;
+}
+
+.social-btn .btn-primary {
+  background: #507cc0;
+}
+
+.social-btn .btn-info {
+  background: #64ccf1;
+}
+
+.social-btn .btn-danger {
+  background: #df4930;
+}
+
+.social-btn .btn i {
+  float: left;
+  margin: 3px 10px;
+  font-size: 20px;
+}
+
+
+.landingForm {
+
+  position: relative;
+  min-height: 100vh;
+}
+
+.login_desc {
+  padding-top: 50%;
+}
+
+@media (max-width: 990px) {
+  .login_desc {
+    padding-top: 30%;
+    padding-bottom: 30%;
+  }
+}

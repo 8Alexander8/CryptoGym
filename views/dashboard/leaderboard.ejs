@@ -1,0 +1,38 @@
+<%- include ('./partials/header') %>
+<div class="container">
+    <div class="text-center mt-5">
+        <h1 class="h3 mb-5 text-gray-800">Leaderboard</h1>
+
+    </div>
+    <div class="container-fluidv shadow p-3 br-3">
+        <table id="table_leaderboard" class="cell-border text-center">
+            <thead>
+
+                <tr>
+
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Portfolio Value</th>
+                </tr>
+            </thead>
+            <tbody>
+
+                <% users.forEach((user) => { %>
+                <tr>
+
+                    <td><%= user.username %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.portfolioValue %></td>
+                </tr>
+                <% }) %>
+
+            </tbody>
+
+        </table>
+    </div>
+
+</div>
+
+
+
+<%- include ('./partials/footer') -%>

@@ -1,0 +1,47 @@
+<%- include ('./partials/header') %>
+<div class="container ">
+  <div class="text-center">
+    <h1 class="h3 mb-5 text-gray-800">News Feed</h1>
+  </div>
+  <% newsData.forEach((data)=>{ %>
+
+  <div class="card mb-3 shadow lozad" style="max-width: 100%;">
+    <div class="row no-gutters">
+      <div class="col-md-4">
+        <img src="<%=data.imageurl %>" class="card-img" alt="..." />
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h4 class="card-title"><strong><%= data.title %></strong></h4>
+          <p class="card-text"><%= data.body %> <a href="<%= data.url %>" target="_blank">Read More</a></p>
+          <p class="card-text">
+            <small class="text-muted"></small>
+          </p>
+        </div>
+        <% let unix_timestamp = data.published_on;
+        // Create a new JavaScript Date object based on the timestamp
+        // multiplied by 1000 so that the argument is in milliseconds, not seconds.
+        var date = new Date(unix_timestamp * 1000);
+        // Hours part from the timestamp
+        var hours = date.getHours();
+        // Minutes part from the timestamp
+        var minutes = "0" + date.getMinutes();
+        // Seconds part from the timestamp
+        var seconds = "0" + date.getSeconds();
+        
+        // Will display time in 10:30:23 format
+        var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+        
+       ; %>
+        <div class="card-footer bg-transparent text-center" style="position:absolute;
+        bottom:0;
+        width:100%;">Published on : <%= formattedTime %> </div>
+      </div>
+    </div>
+  </div>
+
+  <% }) %>
+</div>
+
+
+<%- include ('./partials/footer') %>
