@@ -1,0 +1,107 @@
+<%- include ('../partials/header') %>
+
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success" id="add_post" href="/dashboard/blog/post">Add post</a>
+    </div>
+    <div class="mt-5">
+        <% posts.forEach(function (post){ %>
+        <div id="<%= post._id %>" class="main-section shadow mt-5 mb-5">
+            <div class="content">
+                <div class="top-section">
+                    <div class="user-img">
+                        <img src="/assets/uploads/images/<%= post.user_image %>">
+                    </div>
+                    <div class="user-detail">
+                        <p><%= post.user.username %> </p>
+                        <span>Shared publicly - <%= post.createdAt %></span>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="mt-3">
+                    <h2><%= post.title %> </h2>
+                </div>
+
+                <div class="comment-content">
+                    <span><%= post.post %>.</span>
+                </div>
+                <hr>
+                <div class="sub-comment">
+                    <% var count = 0 %>
+                    <% if(post.comments) { %>
+                    <%   post.comments.forEach(function (comment){ %>
+                    <% count ++%>
+                    <div class="row m-2">
+                        <div class="col-md-12">
+                            <div class="card card-white post p-2 shadow">
+                                <div class="post-heading">
+                                    <div class="float-left image">
+                                        <img src="/assets/uploads/images/<%= comment.user_image %> "
+                                            class="img-circle avatar" alt="user profile image">
+                                    </div>
+                                    <div class="float-left meta ml-1">
+                                        <div class="title">
+                                            <b class="font-weight-bold"><%= comment.author.username %> </b>
+                                            comment.
+                                        </div>
+                                        <p class="text-muted time font-weight-light"><%= comment.createdAt %></p>
+                                    </div>
+                                </div>
+                                <div class="post-description p-1">
+                                    <p><%= comment.text %></p>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <% }) %>
+                    <% } %>
+                </div>
+
+                <div class="comment-box box">
+                    <div class="count-btn">
+                        <p class="btn countComment"><%= count%></p>
+                    </div>
+
+                    <button class="btn btn-secondary btn-sm showComment">Show Comments</button>
+                    <% if(currentUser && post.user.id.equals(currentUser._id)) { %>
+                    <div class="float-right">
+                        <button class="btn btn-danger deletPost" data-postId=<%= post._id %>>Delete post</button>
+                    </div>
+                    <% } %>
+
+                    <div style="clear:both;"></div>
+                    <div class="comment-btn">
+                        <input type="textarea" class="text" rows="10" cols="30" placeholder="Add a comment...">
+                    </div>
+                </div>
+            </div>
+            <div class="add-comment">
+                <div class="box">
+                    <div class="add-comment-img">
+                        <img src="/assets/uploads/images/<%= currentUser.image %>">
+                    </div>
+                    <div class="add-comment-text">
+                        <textarea rows="5" class="example-textarea"></textarea>
+                    </div>
+                    <div style="clear:both;"></div>
+                </div>
+                <div class="add-comment-text-btn d-flex justify-content-center">
+                    <button class="btn btn-success post-comment-btn mr-2" data-userimg=<%= currentUser.image %>
+                        data-usernickname=<%= post.user.username %> data-post=<%= post._id %>>Post
+                        Comment</button>
+                    <button class="btn btn-danger cancel-btn">Cancel</button>
+                </div>
+            </div>
+        </div>
+
+        <% }) %>
+    </div>
+
+</div>
+
+
+
+<%- include ('../partials/footer') -%>

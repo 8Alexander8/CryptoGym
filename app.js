@@ -8,6 +8,7 @@ const LocalStrategy = require("passport-local");
 const User = require("./models/user");
 const flash = require("connect-flash");
 const utf8 = require("utf8");
+const PORT = process.env.PORT || 3000;
 
 //Requiring routes
 const indexRoute = require("./routes/landing/index");
@@ -17,9 +18,10 @@ const dashboardIndexRoute = require("./routes/dashboard/index");
 const dashboardWatchlistRoute = require("./routes/dashboard/watchlist");
 const dashboardPortfolioRoute = require("./routes/dashboard/portfolio");
 const userRoute = require("./routes/dashboard/user");
+const blogRoute = require("./routes/dashboard/blog");
 
 //MongoDB Connect
-mongoose.connect("mongodb://localhost:27017/stock_gym", {
+mongoose.connect(process.env.DATABASEURL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false
@@ -71,9 +73,10 @@ app.use("/dashboard", dashboardIndexRoute);
 app.use("/dashboard/watchlist", dashboardWatchlistRoute);
 app.use("/dashboard/portfolio", dashboardPortfolioRoute);
 app.use("/dashboard/user", userRoute);
+app.use("/dashboard/blog", blogRoute);
 
 
 //Server Listening
-app.listen(3000, (err) => {
+app.listen(PORT, (err) => {
   console.log(chalk.green("Server is running on port 3000"));
 });

@@ -5,7 +5,7 @@ const apiCall = require("../../api/index");
 const User = require("../../models/user");
 const Portfolio = require("../../models/portfolio");
 const Watchlist = require("../../models/watchlist");
-const service = require("../../service/service")
+
 
 //Show Dashboard main page
 router.get("/", Middleware.isLoggedIn, async (req, res) => {
@@ -145,5 +145,13 @@ router.get("/leaderboard", async (req, res) => {
     users: users
   });
 });
+
+//Logout
+
+router.get("/logout", (req, res) => {
+  req.logOut()
+  res.redirect("/")
+})
+
 
 module.exports = router;

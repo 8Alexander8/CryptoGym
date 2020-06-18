@@ -86,3 +86,52 @@ $("#table_leaderboard").dataTable({
   }]
   // "responsive": true
 });
+
+
+//Blog Post
+$(".sub-comment").hide()
+$(".text").click(function () {
+  $(".text").hide();
+});
+$(".showComment").click(function () {
+  $(".sub-comment").slideToggle()
+})
+$(".cancel-btn").click(function () {
+  $(".text").show();
+});
+
+$('.text').click(function () {
+  $(".add-comment").slideToggle("slow");
+});
+
+$('.post-comment-btn').click(function () {
+  var data = $('.example-textarea').val();
+  if (!data) {
+    alert("Plese Enter value after click button post comment..");
+  } else {
+    $('.example-textarea').val('');
+
+    $.ajax({
+      url: "/dashboard/blog/comment",
+      type: "post",
+      data: {
+        user_image: $(this).attr("data-userimg"),
+        user_nickname: $(this).attr("data-usernickname"),
+        post_id: $(this).attr("data-post"),
+        comment: data
+      },
+      success: function (result) {
+        if (result) {
+          console.log(result)
+          $(".sub-comment").append('<div class="row m-2"><div class="col-md-12"><div class="card card-white post p-2 shadow"><div class="post-heading"><div class="float-left image"><img src="/assets/uploads/images/' + result.user_image + ' "class="img-circle avatar" alt="user profile image"></div><div class="float-left meta ml-1"><div class="title"><b class="font-weight-bold">' + result.author.username + ' </b>comment.</div><p class="text-muted time font-weight-light">' + result.createdAt + '</p></div></div><div class="post-description p-1"><p>' + result.text + '</p></div></div></div></div>');
+          $(".sub-comment").slideToggle()
+          $(".countComment").text() = $(".countComment").text() + 1
+        }
+      }
+    })
+  }
+});
+
+$(".cancel-btn").click(function () {
+  $(".add-comment").hide("slow");
+});

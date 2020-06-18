@@ -33,10 +33,16 @@ apiCallObj.newsData = async function () {
   );
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
   xhttp.send();
-  const data = await entities.decode(xhttp.responseText);
-  const news_data = await JSON.parse(data);
-  console.log(news_data)
-  return news_data.Data;
+  try {
+    const data = await entities.decode(xhttp.responseText);
+    const news_data = JSON.parse(data);
+    return news_data.Data;
+  } catch (error) {
+    console.log(error)
+    const data = await xhttp.responseText;
+    const news_data = JSON.parse(data);
+    return news_data.Data;
+  }
 };
 
 module.exports = apiCallObj;

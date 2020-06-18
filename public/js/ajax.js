@@ -223,3 +223,34 @@ $('#table_id').on('click', 'tbody tr', function (e) {
         window.location.href = "/dashboard/chart?coin=" + $(this).attr('data-coin');
     }
 });
+
+//Delete Blog Post
+$(".deletPost").on("click", function () {
+    let id = $(this).attr("data-postId");
+    swal.fire({
+        title: 'Are you sure you want to delete your post?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Delete'
+    }).then((result) => {
+        if (result.value) {
+            $.ajax({
+                url: "blog/delete",
+                type: "delete",
+                data: {
+                    post_id: $(this).attr("data-postId"),
+                },
+                success: function (result) {
+                    if (result) {
+                        $("#" + id).remove();
+                        Swal.fire(
+                            result
+                        )
+                    }
+                }.bind(this)
+            })
+        }
+    })
+})
