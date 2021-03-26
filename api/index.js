@@ -28,7 +28,7 @@ apiCallObj.newsData = async function () {
   const xhttp = new XMLHttpRequest();
   xhttp.open(
     "GET",
-    "https://min-api.cryptocompare.com/data/v2/news/?lang=EN&api_key=f979eea26e59bdefe68d50e04815a648f87ae1c0a4f37bb92564f937d57183c3",
+    process.env.CRYPTOAPI,
     false
   );
   xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
